@@ -1,0 +1,41 @@
+{%extends 'blogs/base.html'%}
+
+  
+    {% block content %}
+
+    <div class="center border">
+      <div class="container border rounded bg-light">
+        <h4> <strong>Signed in as:</strong> {{request.user}}</h4>
+        
+          <a class="btn btn-primary btn-sm m-3" href="{% url 'post-create' %}">New Post</a>
+        
+      </div>
+      
+    <div class="center my-3">
+      <legend class="border-bottom mb-4">
+        Post Feed
+    </legend>
+        
+            
+                {% for post in posts %}
+                <div class="my-3 border rounded border-secondary bg-light p-3">
+                    
+                    <h3>
+                      <a class="article-title" style="text-decoration: none;" href="{% url 'post-detail' post.id %}">{{post.title}}</a>
+                    </h3>
+                    <i class="text-muted border-bottom">By {{post.author}} on {{post.date_added}}</i>
+                    <p class="p-2">{{post.content}}</p>
+                  
+                  </div>
+                
+                {% endfor %}
+              
+            
+          
+    </div>
+    
+      
+      
+    {% endblock content %}
+
+    

@@ -1,0 +1,45 @@
+{%extends 'blogs/base.html'%}
+
+  
+    {% block content %}
+
+    <div class="center border my-3 p-3">
+     
+        <table class="table table-success table-striped table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">User</th>
+                <th scope="col">Email</th>
+                <th scope="col">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+            
+                {% for user1 in users %}
+                
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{user1.username}}</td>
+                    <td>{{user1.email}} </td>
+                    <td>
+                      {%if not  user1.is_superuser%}
+                        <a href="/admin/auth/user/" type="button" class="btn btn-outline-danger btn-sm mx-1">Delete </button>
+                      {% else %}
+                        <p>Super User</p>
+                      {% endif %}
+                        </td>
+                </tr>
+
+                {% endfor %}
+              
+            
+            </tbody>
+          </table>
+    </div>
+    
+      
+      
+    {% endblock content %}
+
+    

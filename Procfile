@@ -1,0 +1,1 @@
+web: gunicorn nemesis_project.wsgi
