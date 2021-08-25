@@ -12,7 +12,7 @@
             <i class="text-muted border-bottom">By {{object.author}} on {{object.date_added}}</i>
             <p class="p-2">{{object.content}}</p>
             {% if request.user.is_superuser %}
-                <button type="button" class="btn btn-outline-danger" href="">Delete post</button>
+            <a type="button" class="btn btn-outline-primary" href="{% url 'post-update' object.id %}">Update</a>
                 <a type="button" class="btn btn-outline-danger" href="{% url 'post-delete' object.id %}">Delete post</a>
             {% endif %}
             {% if request.user == post.author and not request.user.is_superuser  %}
